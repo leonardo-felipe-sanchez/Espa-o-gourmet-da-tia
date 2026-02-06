@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="">ALMOÇO</a></li>
+          <li><a href="">BOLOS</a></li>
+          <li><a href="">PRODUTOS</a></li>
+          <li><img src="./logo.svg" alt="" class="icones" id="logo" /></li>
+          <li><a href="">SOBRE MIM</a></li>
+          <li><a href="">CONTATOS</a></li>
+          <li>
+            <img src="./menu.svg" alt="" class="icones" id="menu" /><img
+              src="./close-circle.svg"
+              alt=""
+              class="icones"
+              id="closeCircle"
+            />
+          </li>
+        </ul>
+      </nav>
+      <div class="barra">
+        <ul>
+          <li><a href="">ALMOÇO</a></li>
+          <li><a href="">BOLOS</a></li>
+          <li><a href="">PRODUTOS</a></li>
+          <li><a href="">SOBRE MIM</a></li>
+          <li><a href="">CONTATOS</a></li>
+        </ul>
+      </div>
+    </header>
+    <section id="apresentacao">
+      <div class="texto">
+        <p><span>B</span>olos personalizados que te representam!</p>
+        <p>
+          Aqui você tem a liberdade para criar, acompanhando cada processo em
+          tempo real
+        </p>
+      </div>
+    </section>
+    <section id="sobre">
+      <div class="metade">
+        <img src="./ires.png" id="ires" />
+      </div>
+      <div class="metade">
+        <p><span>S</span>obre mim</p>
+        <p>
+          A história do "Espaço Gourmet da Tia" nasceu do talento e da paixão da
+          Dona Ires por fazer bolos, um dom que rapidamente se tornou um
+          negócio, conquistando uma base de clientes fiéis na Zona Norte de São
+          Paulo.
+          <br /><br />
+          Com a crescente demanda, ela inaugurou um espaço físico que, por
+          sugestão de uma cliente, foi rebatizado com o nome que carrega até
+          hoje.
+          <br />
+          <br />
+          Com quase uma década de experiência, Dona Ires consolidou um legado de
+          sabor e afeto, expandindo sua marca para atender a todas as ocasiões e
+          a uma gama versátil de serviços, de refeições a bolos de casamento.
+        </p>
+      </div>
+    </section>
+<section id="produtos">
+      <div id="servicos">
+      <div class="metade">
+        <div class="container">
+          <div class="box">
+            <img src="./bolo1.jpg" alt="" />
+            <div class="texto">
+              <div class="boxTitulo">Kit festa</div>
+              <p>Bolo + docinho </p><p>Brigadeiros variados a seu gosto </p>
+            </div>
+          </div>
+          <div class="box">
+            <img src="./bolo1.jpg" alt="" />
+            <div class="texto">
+              <div class="boxTitulo">Cesta café da manhã e tarde</div>
+              <p>Monte a sua cesta com suas marcas favoritas</p>
+            </div>
+          </div>
+          <div class="box">
+            <img src="./bolo1.jpg" alt="" />
+            <div class="texto">
+              <div class="boxTitulo">Pão de mel</div>
+              <p>Recheio de doçe de leite e brigadeiro</p>
+            </div>
+          </div>
+          <div class="box">
+            <img src="./bolo1.jpg" alt="" />
+            <div class="texto">
+              <div class="boxTitulo">Torta de morango</div>
+              <p>Bolo + docinho </p><p>Brigadeiros variados a seu gosto </p>
+            </div>
+          </div>
+        </div>
+        <button><a href="https://www.pudim.com.br" target="_blank">Ver mais</a></button>
+      </div>
+      <div class="metade">
+        <p>Seu bolo personalizado!</p>
+        <p>
+          Seu pedido 100% personalizado<br />
+          Agilize aqui e agora
+        </p>
+        <form action="">
+          <select name="tipo" id="eventoBolo">
+            <option value="" disabled selected>Qual tipo de evento?</option>
+            <option value="niver">Aniversário</option>
+            <option value="casamento">Casamento</option>
+            <option value="corporativo">Corporativo</option>
+            <option value="outros">hello</option>
+          </select>
+          <select name="tipo" id="massa">
+            <option value="" disabled selected>Selecione a massa</option>
+            <option value="chocolate">Chocolate</option>
+            <option value="cenoura">Cenoura</option>
+            <option value="morango">Morango</option>
+            <option value="outros">Outros</option>
+          </select>
+          <select name="" id="cobertura">
+            <option value="" disabled selected>Selecione a cobertura</option>
+            <option value="chocolate">Chocolate</option>
+            <option value="creme">Creme</option>
+            <option value="leiteNinho">Leite ninho</option>
+            <option value="outros">Outros</option>
+          </select>
+
+          <select name="" id="recheio">
+            <option value="" disabled selected>Selecione o recheio</option>
+            <option value="chocolate">Chocolate</option>
+            <option value="morango">Morango</option>
+            <option value="beijinho">Beijinho</option>
+            <option value="outros">Outros</option>
+          </select>
+          <select name="" id="formato">
+            <option value="" disabled selected>Selecione o formato</option>
+            <option value="redondo">Redondo</option>
+            <option value="quadrado">Quadrado</option>
+            <option value="retangular">Retangular</option>
+            <option value="coracao">Coração</option>
+          </select>
+          <select name="" id="tamanho">
+            <option value="" disabled selected>Selecione o tamanho</option>
+            <option value="pequeno">Pequeno (até 10 pessoas)</option>
+            <option value="medio">Médio (10 a 20 pessoas)</option>
+            <option value="grande">Grande (mais de 20 pessoas)</option>
+          </select>
+          <input type="submit" value="Enviar pedido" />
+        </form>
+      </div>
+    </div>
+    <div id="marmita">
+      <div class="metade">
+        <p>Marmitas fresquinhas!</p>
+        <p>Comida caseira e saudavel por um clique de distância.</p>
+        <p>Faça seu pedido e receba na sua casa!</p>
+        <button><a href="">VER MAIS</a></button>
+      </div>
+      <div class="metade"></div>
+    </div>
+</section>
+  </body>
+</html>
+
+<script src="index.js"></script>

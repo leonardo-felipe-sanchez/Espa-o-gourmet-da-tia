@@ -1,0 +1,637 @@
+@import "fontes.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    "Aloevera-display", "behind-the-nineties", "malibu-sunday-script", "malibu-sunday-serif";
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #f13f74;
+}
+
+section {
+  width: 100%;
+  height: 700px;
+}
+
+.metade {
+  width: 50%;
+  height: 100%;
+  margin: 2%;
+}
+
+select {
+    cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  padding: 15px;
+  padding-right: 35px; /* Espaço para a seta não ficar em cima do texto */
+
+  /* Remove a seta padrão */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  /* Define apenas a imagem e a posição */
+  background-image: url("dropdown-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* 10px de distância da direita */
+  background-size: 25px; /* Ajuste o tamanho da seta se necessário */
+  background-color: white; /* Ou a cor de fundo que desejar */
+}
+
+input, button{
+    cursor: pointer;
+    border-radius: 40px;
+    text-align: center;
+    border:#f13f74 2px solid;
+    padding: 20px;
+    background-color: white;
+}
+
+input{
+    color: black;
+}
+/*
+Cabeçalho
+*/
+
+header {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  z-index: 2;
+}
+
+nav {
+  background-color: white;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo {
+  height: 80px;
+  cursor: pointer;
+}
+
+#menu,
+#closeCircle {
+  display: none;
+  cursor: pointer;
+}
+
+.icones {
+  filter: brightness(0) saturate(100%) invert(38%) sepia(55%) saturate(1321%)
+    hue-rotate(304deg) brightness(93%) contrast(104%);
+}
+
+nav ul:first-child {
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  font-family: "Aloevera-display";
+  font-weight: 400;
+}
+
+nav ul li a:hover,
+.barra ul li a:hover {
+  font-weight: 600;
+  font-size: 14pt;
+  transition: 3s;
+}
+
+.barra {
+  position: relative;
+  background-color: white;
+  width: 150px;
+  height: 35vh;
+  float: right;
+  margin-right: -160px;
+  transition: margin-right 0.3s ease;
+}
+
+.barra ul li {
+  width: 100%;
+  text-align: center;
+  margin: 30px 0;
+}
+
+@media (max-width: 850px) {
+  #logo {
+    height: 65px;
+  }
+  nav,
+  nav ul {
+    justify-content: initial;
+  }
+
+  #menu {
+    display: block;
+  }
+
+  #menu,
+  #closeCircle {
+    height: 80px;
+    margin-left: auto;
+  }
+
+  nav ul li {
+    margin: 0 0;
+  }
+
+  nav ul li a {
+    display: none;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+  nav ul {
+    gap: 35%;
+  }
+}
+
+@media (min-width: 650px) and (max-width: 799px) {
+  nav ul {
+    gap: 27%;
+  }
+}
+
+@media (min-width: 560px) and (max-width: 649px) {
+  nav ul {
+    gap: 20%;
+  }
+}
+
+@media (min-width: 460px) and (max-width: 559px) {
+  nav ul {
+    gap: 15%;
+  }
+}
+
+@media (min-width: 390px) and (max-width: 459px) {
+  nav ul {
+    gap: 10%;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 389px) {
+  nav ul {
+    gap: 4%;
+  }
+}
+
+@media (max-width: 319px) {
+  nav ul {
+    gap: 1%;
+  }
+}
+
+/*apresentação*/
+
+#apresentacao {
+  background-image: url("bolo1.jpg");
+  background-repeat: no-repeat;
+  background-size: 1450px 1450px;
+  background-position: right -350px;
+  margin-top: 120px;
+  align-items: center;
+  display: flex;
+  padding: 0 5%;
+  margin-bottom: 40px;
+}
+
+.texto {
+  width: 45%;
+  color: #f13f74;
+}
+
+.texto p:first-child,
+.metade p:first-child {
+  font-family: "behind-the-nineties";
+  font-style: italic;
+  font-weight: 500;
+  font-size: 40pt;
+}
+
+.texto p:first-child {
+  margin-bottom: 160px;
+}
+
+.texto p:first-child span,
+.metade p:first-child span {
+  font-family: "malibu-sunday-script";
+  font-size: 70pt;
+  margin-right: 10px;
+  margin-left: -10px;
+}
+
+.texto p:nth-child(2) {
+  font-size: 21.5pt;
+  font-weight: 300;
+  font-family: "Aloevera-display";
+  width: 77%;
+}
+
+/*sobre mim*/
+
+#sobre {
+  background-color: white;
+  display: flex;
+  padding: 5%;
+  height: 800px;
+}
+
+#ires {
+  width: 90%;
+}
+
+#sobre p:first-child {
+  text-align: center;
+  width: 80%;
+  margin-bottom: 20px;
+  color: #f13f74;
+}
+
+#sobre p:nth-child(2) {
+  width: 100%;
+  text-align: justify;
+  font-size: 17pt;
+  font-weight: 300;
+}
+
+/*Serviços*/
+
+#servicos {
+  display: flex;
+  height: 900px;
+  align-items: center;
+}
+
+#servicos .metade {
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+
+#servicos .metade:first-child{
+    justify-content: center;
+    background-color: #ffecf2;
+    margin-left: 2%;
+    border-radius: 50px 0 0 50px;
+}
+
+#servicos .metade:first-child .container {
+    position:relative;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    overflow-x: scroll;
+    scrollbar-color: #f13f7420 transparent;
+    scrollbar-width: thin;
+    margin-bottom: 40px;
+}
+
+#servicos .metade:first-child .container:hover {
+    scrollbar-color: #f13f7460 #f13f7415;
+}
+
+#servicos .metade:first-child .container .box{
+    min-width: 300px;
+    height: 550px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 15% 15% 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#servicos .metade:first-child .container .box img{
+    width: 300px;
+    border-radius: 15% 15% 0 0;
+}
+
+#servicos .metade:first-child .container .box .texto{
+    width: 80%;
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#servicos .metade:first-child .container .box .texto p{
+    width: 210px;
+    text-align: center;
+    margin-bottom: 7%;
+    font-weight: 300;
+}
+
+.boxTitulo{
+    font-family: 'aloevera-display';
+    font-weight: 500;
+    font-size: 20pt;
+    margin-bottom: 7%;
+    text-align: center;
+}
+
+#servicos .metade:first-child .container .box .texto p{
+    font-weight: 300;
+    font-size: 14pt;
+}
+
+#servicos .metade:nth-child(2) {
+  background-color: #f46f9b;
+  border-radius: 0 50px 50px 0;
+  padding: 5%;
+  margin-right: 2%;
+}
+
+#servicos .metade:nth-child(2) p {
+  color: white;
+  text-align: center;
+  width: 80%;
+}
+
+#servicos .metade:nth-child(2) p:first-child {
+  font-size: 35pt;
+  margin-bottom: 20px;
+}
+
+#servicos .metade:nth-child(2) p:nth-child(2) {
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+#servicos .metade:nth-child(2) form{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: 40px 20px;
+    width: 100%;
+}
+
+#servicos .metade:nth-child(2) form input[type="submit"]{
+    grid-column: span 2;
+    background-color: white;
+    color: #f13f74;
+    cursor: pointer;
+    width: 150px;
+    margin: 0 auto;
+    text-transform: uppercase;
+}
+
+#servicos .metade:nth-child(2) form input[type="submit"]:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 5px #c21d4e, 0 0 10px #c21d4e, 0 0 20px #c21d4e;
+    transition: 3s;
+}
+
+#marmita{
+  display: flex;
+  height: 600px;
+  margin: 0 2%;
+  width: 98%;
+}
+
+#marmita .metade{
+  margin: 0;
+}
+
+#marmita .metade:first-child{
+  width: 40%;
+  background-color: #ffecf2;
+  border-radius: 50px 0 0 50px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+}
+
+#marmita .metade:first-child p{
+  margin: 10px 0;
+  text-align: center;
+}
+
+#marmita .metade:first-child p:first-child{
+  font-size: 35pt;
+  font-weight: 500;
+  color: #f13f74;
+  line-height: 55px;
+  margin-bottom: 30px;
+}
+
+#marmita .metade:first-child p:nth-child(2), #marmita .metade:first-child p:nth-child(3){
+  font-size: 15pt;
+  font-weight: 300;
+  width: 70%;
+}
+
+#marmita .metade:first-child button{
+  margin-top: 40px;
+}
+
+#marmita .metade:nth-child(2){
+  width: 60%;
+  background-image: url("./bolo1.jpg");
+  background-repeat: no-repeat;
+  background-size: 1200px 1200px;
+  background-position: right -250px;
+  height: 500px;
+  border-radius: 0 50px 50px 0;
+  margin-right: 2%;
+}
+
+@media (max-width: 1177px) {
+  #apresentacao {
+    background-image: url("bolo2.jpg");
+    background-size: 1177px 1177px;
+    height: 800px;
+    align-items: baseline;
+    padding: 6% 0;
+    justify-content: center;
+  }
+
+  #sobre {
+    flex-direction: column-reverse;
+    align-items: center;
+    height: auto;
+    padding: 1%;
+  }
+
+  #sobre img{width: 100%;}
+
+  #servicos{
+    flex-direction: column;
+    padding: 0;
+    margin-bottom: 30px;
+    height: auto;
+  }
+
+#servicos .metade:first-child{
+  margin-left: 0;
+  border-radius: 50px 50px 0 0;
+  padding: 10% 0;
+  height: auto;
+}
+
+#servicos .metade:first-child .container .box img{
+  width: 100%; object-fit: cover;
+  max-height: 200px;
+}
+
+#servicos .metade:first-child .container .box{
+  height: 400px;
+}
+
+#servicos .metade:first-child .container .box .texto p{
+  font-size: 12pt;
+}
+
+.boxTitulo{
+  font-size: 16pt;
+}
+
+#servicos .metade:nth-child(2){
+    border-radius: 0 0 50px 50px;
+    margin-right: 0;
+    padding: 10%;
+    height: auto;
+  }
+
+#servicos .metade:nth-child(2) form {
+  width: auto;
+}
+
+#marmita {
+    flex-direction: column;
+    height: auto;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+#marmita .metade:first-child, #marmita .metade:nth-child(2){
+  width:80%;
+}
+
+#marmita .metade:first-child{
+border-radius: 50px 50px 0 0;
+}
+
+#marmita .metade:nth-child(2){
+border-radius: 0 0 50px 50px;
+margin-right: 0;
+}
+
+  .metade {
+    width: 80%;
+    margin: 40px;
+  }
+
+  .texto {
+    width: 70%;
+    justify-content: center;
+  }
+
+  .texto p {
+    text-align: center;
+  }
+}
+
+@media (min-width: 618px) and (max-width: 1177px) {
+  .texto p:first-child,
+  .metade p:first-child {
+    font-size: 30pt;
+    margin-bottom: 60px;
+  }
+
+  .texto p:nth-child(2) {
+    font-size: 18pt;
+    width: 98.9%;
+  }
+}
+
+@media (max-width: 617px) {
+  #apresentacao {
+    height: 700px;
+    background-position: right -100px;
+    background-size: 800px 800px;
+  }
+
+  #sobre p:nth-child(2) {
+    font-size: 12pt;
+  }
+
+  #servicos .metade:nth-child(2) form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #servicos .metade:nth-child(2) p:first-child{
+    font-size: 20pt;
+  }
+}
+
+@media (min-width: 441px) and (max-width: 617px) {
+  #sobre .metade:nth-child(2) p:first-child{
+    font-size: 25pt;
+  }
+
+  .texto p:first-child,
+  .metade p:first-child {
+    font-size: 20pt;
+    margin-bottom: 40px;
+  }
+  .texto p:nth-child(2) {
+    font-size: 14pt;
+    width: 98.9%;
+  }
+}
+
+@media (max-width: 440px) {
+  #sobre .metade:nth-child(2) p:first-child{
+    font-size: 25pt;
+  }
+
+  .texto p:first-child,
+  .metade p:first-child {
+    font-size: 15pt;
+    margin-bottom: 40px;
+  }
+  .texto p:nth-child(2) {
+    font-size: 12pt;
+    width: 98.9%;
+  }
+
+  #servicos .metade:first-child .container .box{
+  min-width: 250px;
+}
+}
