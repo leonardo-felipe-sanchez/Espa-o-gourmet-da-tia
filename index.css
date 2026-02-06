@@ -458,10 +458,10 @@ nav ul li a:hover,
 
 #marmita .metade:nth-child(2){
   width: 60%;
-  background-image: url("./bolo1.jpg");
+  background-image: url("./marmitas.png");
   background-repeat: no-repeat;
-  background-size: 1200px 1200px;
-  background-position: right -250px;
+  background-size: 1200px 733px;
+  background-position: right -100px;
   height: 500px;
   border-radius: 0 50px 50px 0;
   margin-right: 2%;
@@ -487,7 +487,7 @@ nav ul li a:hover,
   #sobre img{width: 100%;}
 
   #servicos{
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding: 0;
     margin-bottom: 30px;
     height: auto;
@@ -495,7 +495,7 @@ nav ul li a:hover,
 
 #servicos .metade:first-child{
   margin-left: 0;
-  border-radius: 50px 50px 0 0;
+  border-radius: 0 0 50px 50px;
   padding: 10% 0;
   height: auto;
 }
@@ -518,7 +518,7 @@ nav ul li a:hover,
 }
 
 #servicos .metade:nth-child(2){
-    border-radius: 0 0 50px 50px;
+    border-radius: 50px 50px 0 0;
     margin-right: 0;
     padding: 10%;
     height: auto;
