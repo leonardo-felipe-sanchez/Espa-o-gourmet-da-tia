@@ -2,14 +2,15 @@ import { Cabecalho } from "../organismo/Cabecalho"
 import { Rodape } from "../organismo/Rodape"
 import { Sessao } from "../organismo/sessoes"
 
-export const ModeloDePaginaInicial = (({headerProps, footerProps, sessionProps}) => {
+export const ModeloDePaginaInicial = ({headerProps, footerProps, sessionProps}) => {
     return(
         <>
-        {console.log("Modelo de pagina inicial")}
-        {console.log(sessionProps)}
         <Cabecalho {...headerProps} />
+        {sessionProps.map((sessao, index) =>{
+        return(<Sessao key={index+100} {...sessao}/>)
+        })
+        }
         <Rodape {...footerProps}/>
-        <Sessao {...sessionProps}/>
         </>
     )
-})
+}

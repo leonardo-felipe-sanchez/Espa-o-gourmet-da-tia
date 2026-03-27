@@ -1,9 +1,11 @@
 import { Texto } from "../../atomos/Texto/Texto"
 
-export const Paragrafo =((classe, textos)=> {
-    return(
-        <div className={classe}>
-            <Texto como={textos.como}>{textos.texto}</Texto>
-        </div>
-    )
-})
+export const Paragrafo =(({classe, textos})=> (
+    <div className={classe}>
+        {textos.map((textinho, index)=>{
+            return(
+                <Texto key={index+10} como={textinho.como} classe={textinho.classe}> {textinho.texto} </Texto>
+            )
+        })}
+    </div>
+))

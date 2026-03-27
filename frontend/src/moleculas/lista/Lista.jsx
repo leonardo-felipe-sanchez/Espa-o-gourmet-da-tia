@@ -10,7 +10,6 @@ export const Lista = (({direcionamento, lista = [], imagens = []}) => {
         }
         {
             imagens ? (
-                console.log(imagens),
                         Listao(imagens)
             )
             : 
