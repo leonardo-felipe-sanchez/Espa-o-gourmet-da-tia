@@ -1,3 +1,4 @@
+import { Imagem } from "../atomos/imagem/imagem";
 import { Paragrafo } from "../moleculas/Paragrafos/Paragrafo";
 
 export const Sessao = ({ classe ={}, divisoria, imagem = {} , conteudos = [] }) => {
@@ -28,6 +29,7 @@ function Divisor(divisoria, conteudos) {
                 classe={conteudo?.paragrafo?.classe} 
                 textos={conteudo?.paragrafo?.texto || []} 
             />
+            <Imagem caminho={conteudo?.imagem?.imagem} classe={conteudo?.imagem?.classe}/>
         </div>
     ));
 }
