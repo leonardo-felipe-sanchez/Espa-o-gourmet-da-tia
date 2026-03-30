@@ -43,7 +43,7 @@ export const PaginaPrincipal = () => {
     },
     {
       texto:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea facilis numquam maiores iure tempora hic voluptas fugiat harum pariatur, vitae eum ab atque ullam laudantium nulla accusantium ipsam iste ipsa, veritatis natus sed. Enim ut laudantium, aspernatur a earum natus?",
+        "Aqui você tem a liberdade para criar, acompanhando cada processo em tempo real ",
       como: "p",
       classe: "pt-50",
     },
@@ -53,10 +53,34 @@ export const PaginaPrincipal = () => {
       como: "p",
     },
         {
-      texto:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea facilis numquam maiores iure tempora hic voluptas fugiat harum pariatur, vitae eum ab atque ullam laudantium nulla accusantium ipsam iste ipsa, veritatis natus sed. Enim ut laudantium, aspernatur a earum natus?",
+      texto: "A história do Espaço Gourmet da Tia nasceu do talento e da paixão da Tia Ires por fazer bolos, um dom que rapidamente se tornou um negócio, conquistando uma base de clientes fiéis na Zona Norte de São Paulo",
       como: "p",
       classe: "pt-10 text-justify",
+    },
+            {
+      texto: "Com a crescente demanda, ela inaugurou um espaço físico que, por sugestão de uma cliente, foi rebatizado com o nome que carrega até hoje. ",
+      como: "p",
+      classe: "pt-10 text-justify",
+    },
+                {
+      texto: "Com quase 3 décadas de experiência, Tia Ires consolidou um legado de sabor e afeto, expandindo sua marca para atender a todas as ocasiões e a uma gama versátil de serviços, de refeições a bolos de casamento. ",
+      como: "p",
+      classe: "pt-10 text-justify",
+    },
+        {
+      texto: "Marmitas fresquinhas!",
+      classe: "text-6xl font-semibold",
+      como: "p",
+    },
+                    {
+      texto: "Comida caseira e saudavel por um clique de distância.",
+      como: "p",
+      classe: "pt-10 text-justify",
+    },
+                        {
+      texto: "Faça seu pedido e receba na sua casa!",
+      como: "p",
+      classe: "pt-5 text-justify",
     },
   ];
 
@@ -87,7 +111,7 @@ export const PaginaPrincipal = () => {
         {
           classe:
             "h-150 flex items-center pl-17 pr-20 justify-center z-1 relative",
-          paragrafo: { classe: "z-2 relative", texto: [Testao[2], Testao[3]] },
+          paragrafo: { classe: "z-2 relative", texto: [Testao[2], Testao[3], Testao[4], Testao[5]] },
         },
       ],
     },
@@ -111,7 +135,7 @@ export const PaginaPrincipal = () => {
       conteudos:[
                 {
           classe: " h-120 rounded-l-[4vw] bg-pink-100 p-17",
-          paragrafo: { classe: "z-2 relative", texto: [Testao[2], Testao[3]] },
+          paragrafo: { classe: "z-2 relative", texto: [Testao[6], Testao[7], Testao[8]] },
         },
         {
           classe: "h-120 w-full  rounded-r-[4vw]",
