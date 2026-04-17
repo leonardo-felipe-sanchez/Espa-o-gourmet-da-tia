@@ -1,11 +1,57 @@
 @import "tailwindcss";
 
-@layer base{
-li{
+html {
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: 'Aloevera';
+  src: url('./fonts/AloeveraDisplay-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nineties';
+  src: url('./fonts/Behind-The-Nineties-Md-It.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Malibu';
+  src: url('./fonts/Malibu Sunday Script.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-aloevera: "Aloevera", sans-serif;
+  --font-nineties: "Nineties", sans-serif;
+  --font-malibu: "Malibu", cursive;
+}
+
+@layer base {
+  p {
+    font-family: var(--font-aloevera);
+  }
+  h1, h2 {
+    @apply font-nineties;
+  }
+
+      li{
     @apply m-5 flex items-center;
 }
 
 a{
-    @apply text-pink-500 hover:font-bold hover:text-lg transition-all duration-1500 ease-in-out;
+  @apply text-pink-500
 }
+
+nav a{
+    @apply hover:text-white hover:bg-pink-500 rounded-full p-4 mx-1 transition-all duration-1500 ease-in-out;
+}
+
 }
