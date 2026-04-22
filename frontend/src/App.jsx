@@ -1,6 +1,6 @@
-import { PaginaPrincipal } from "./pagina/PaginaPrincipal"
-import { DadosDoRodape } from "./organismo/dadosDoRodape.jsx"
-import { DadosDoCabecalho } from "./organismo/dadosDoCabecalho.jsx"
+import { PaginaPrincipal } from "./componentes/pagina/PaginaPrincipal.jsx"
+import { DadosDoRodape } from "./dados/dadosDoRodape.jsx"
+import { DadosDoCabecalho } from "./dados/dadosDoCabecalho.jsx"
 
 function App() {
 

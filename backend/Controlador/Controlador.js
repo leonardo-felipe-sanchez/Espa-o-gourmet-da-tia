@@ -1,7 +1,5 @@
 const nodemailer = require("nodemailer");
 
-const { EMAIL, PASSWORD } = require("../env");
-
 const Dados = async (req, res) => {
   try {
     const { nome, email, telefone, mensagem } = req.body;
