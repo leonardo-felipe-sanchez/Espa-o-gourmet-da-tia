@@ -35,7 +35,7 @@ const { id } = req.params;
 
  const tarefa = tarefas.find(t => t.id === parseInt(id));
 
-res.send(tarefa ? { msg: `retorna uma tarefa: ${tarefa.name}` } : { msg: "Tarefa não encontrada" });
+res.send(tarefa ? { msg: `${tarefa.name}` } : { msg: "Tarefa não encontrada" });
 } catch (error) {
  res.status(500).json({ erro: error.message });   
 }})

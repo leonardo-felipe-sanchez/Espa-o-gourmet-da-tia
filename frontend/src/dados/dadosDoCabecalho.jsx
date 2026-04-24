@@ -7,7 +7,7 @@ export const DadosDoCabecalho = () => {
     lista: [
       { texto: "ALMOÇO", recurso: "#marmita", como: "a", classe: "hidden xl:block" },
       { texto: "BOLOS", recurso: "#confeitaria", como: "a", classe: "hidden xl:block" },
-      { texto: "PRODUTOS", recurso: "#produtinho", como: "a", classe: "hidden xl:block" },
+      { texto: "PRODUTOS", recurso: "produtos", como: "a", classe: "hidden xl:block" },
       { imagem: (
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 508.000000 200.000000"
  preserveAspectRatio="xMidYMid meet">
@@ -164,7 +164,7 @@ l-68 -6 220 111 c260 132 327 153 460 147 50 -2 113 -11 141 -20z m23 -77 c66
 -4 18 -5 17 -6 -3z"/>
 </g>
 </svg>
-), recurso: "#inicial", classe: "w-43 transition-all", como: "svg"},
+), recurso: "/", classe: "w-43 transition-all", como: "svg"},
       { texto: "SOBRE MIM", recurso: "#sobreMim", como: "a", classe: "hidden xl:block" },
       { texto: "CONTATO", recurso: "#converse-conosco", como: "a", classe: "hidden xl:block" },
       { imagem: (

@@ -6,5 +6,5 @@ export const Imagem = ({ caminho, classe, como = "img" }) => {
       </div>
     );
   }
-  return <img src={caminho} className={classe} alt="" />;
+  return <img loading="lazy" src={caminho} className={classe} alt=""/>;
 };
