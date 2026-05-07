@@ -6,7 +6,7 @@ export const DadosDoRodape = () => {
 
 const footerData = {
     classe:
-      "mx-auto flex w-full items-center justify-center p-6 lg:px-8 bg-pink-100",
+      "mx-auto flex w-full items-center justify-center p-6 lg:px-8 bg-pink-100 inset-x-0 bottom-0",
     direcionamento: "flex flex-col xl:flex-row items-center gap-6",
     lista: [
 { imagem: (
@@ -165,11 +165,11 @@ l-68 -6 220 111 c260 132 327 153 460 147 50 -2 113 -11 141 -20z m23 -77 c66
 -4 18 -5 17 -6 -3z"/>
 </g>
 </svg>
-), recurso: "#inicial", classe: "w-43", como: "svg"},
-      { texto: "SOBRE MIM", recurso: "#sobreMim", como: "a" },
-      { texto: "PRODUTOS", recurso: "#confeitaria", como: "a" },
-      { texto: "CONTATOS", recurso: "#converse-conosco", como: "a" },
-      { texto: "POLITICA DE PRIVACIDADE", recurso: "#privacidade", como: "a" },
+), recurso: "/", identidade:"#inicial", classe: "w-43", como: "svg"},
+      { texto: "SOBRE MIM", recurso: "/", identidade:"#sobreMim", como: "a" },
+      { texto: "PRODUTOS", recurso: "/", identidade:"#produtinho",como: "a" },
+      { texto: "CONTATOS", recurso: "/", identidade:"#converse-conosco", como: "a" },
+      { texto: "POLITICA DE PRIVACIDADE", recurso: "/", como: "a" },
     ],
     imagens: listaImagem,
   };

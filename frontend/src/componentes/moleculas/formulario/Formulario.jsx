@@ -19,12 +19,11 @@ const lidarComEnvio = async (event) => {
             body: JSON.stringify(data),
         });
 
-        // Leia o JSON uma única vez e guarde na variável 'resultado'
         const resultado = await response.json();
 
         if (response.ok) {
             alert("Mensagem enviada com sucesso!");
-            event.target.reset(); // Opcional: limpa o form após sucesso
+            event.target.reset();
         } else {
             alert("Erro do servidor: " + (resultado.error || "Tente novamente."));
         }

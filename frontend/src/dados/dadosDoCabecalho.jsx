@@ -5,9 +5,9 @@ export const DadosDoCabecalho = () => {
     classe: "mx-auto flex w-screen h-30 items-center justify-center p-6 lg:px-8 fixed top-0 left-0 bg-white z-50",
     direcionamento: "flex w-full items-center justify-between xl:justify-center mx-auto",
     lista: [
-      { texto: "ALMOÇO", recurso: "#marmita", como: "a", classe: "hidden xl:block" },
-      { texto: "BOLOS", recurso: "#confeitaria", como: "a", classe: "hidden xl:block" },
-      { texto: "PRODUTOS", recurso: "produtos", como: "a", classe: "hidden xl:block" },
+      { texto: "ALMOÇO", recurso: "/", identidade:"#marmita", como: "a", classe: "hidden xl:block" },
+      { texto: "BOLOS", recurso: "/", identidade:"#confeitaria", como: "a", classe: "hidden xl:block" },
+      { texto: "PRODUTOS", recurso: "/produtos", como: "a", classe: "hidden xl:block" },
       { imagem: (
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 508.000000 200.000000"
  preserveAspectRatio="xMidYMid meet">
@@ -164,9 +164,9 @@ l-68 -6 220 111 c260 132 327 153 460 147 50 -2 113 -11 141 -20z m23 -77 c66
 -4 18 -5 17 -6 -3z"/>
 </g>
 </svg>
-), recurso: "/", classe: "w-43 transition-all", como: "svg"},
-      { texto: "SOBRE MIM", recurso: "#sobreMim", como: "a", classe: "hidden xl:block" },
-      { texto: "CONTATO", recurso: "#converse-conosco", como: "a", classe: "hidden xl:block" },
+), recurso: "/", identidade: "#inicial", classe: "w-43 transition-all", como: "svg"},
+      { texto: "SOBRE MIM", recurso: "/", identidade: "#sobreMim", como: "a", classe: "hidden xl:block" },
+      { texto: "CONTATO", recurso: "/", como: "a", classe: "hidden xl:block" },
       { imagem: (
         <svg xmlns="http://www.w3.org/2000/svg" className="w-13" viewBox="0 0 24 24">
           <path fill="" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>

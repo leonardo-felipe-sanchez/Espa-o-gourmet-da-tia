@@ -1,19 +1,24 @@
 import { Link } from "react-router";
+import { HashLink } from 'react-router-hash-link';
 
-export const Texto = function ({ como = "p", referencia, children, classe }) {
-  const atributos = como === "a" ? { href: referencia } : {};
-
+export const Texto = function ({ como = "p", referencia, children, classe, identidade=""}) {
   const Tag = como;
 
+  if (como !== "a") {
+    return <Tag className={classe}>{children}</Tag>;
+  }
+
+  if (identidade !== ""){
+    return (
+<HashLink smooth to={referencia+identidade}>
+ {children}
+</HashLink>
+    )
+  }
+
   return (
-    
-    como != "a" ? 
-        (<Tag {...atributos} className={classe}>
+    <Link to={{pathname: referencia, hash: identidade}} className={classe} preventScrollReset>
       {children}
-    </Tag>) :
-    (<Link to={referencia} className={classe}>
-      {children}
-    </Link>)
-    
+    </Link>
   );
 };

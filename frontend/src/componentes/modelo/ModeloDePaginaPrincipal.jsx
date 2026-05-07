@@ -1,21 +1,32 @@
-import { Cabecalho } from "../organismo/Cabecalho.jsx"
-import { Rodape } from "../organismo/Rodape.jsx"
-import { Sessao } from "../organismo/Sessoes.jsx"
+import { Outlet } from "react-router";
+import { Cabecalho } from "../organismo/Cabecalho.jsx";
+import { Rodape } from "../organismo/Rodape.jsx";
+import { Sessao } from "../organismo/Sessoes.jsx";
 
-export const ModeloDePaginaInicial = ({headerProps = {}, footerProps = {}, sessionProps = {}}) => {
-    return (
-        <>
-            {Object.keys(headerProps).length > 0 ? <Cabecalho {...headerProps} /> : null}
-            {Object.keys(sessionProps).length > 0 ? Sessoes(sessionProps) : null}
-            {Object.keys(footerProps).length > 0 ? <Rodape {...footerProps} /> : null}
-        </>
-    )
-}
+export const ModeloDePaginaInicial = ({
+  headerProps = {},
+  footerProps = {},
+  sessionProps = {},
+}) => {
+  return (
+    <>
+      {Object.keys(headerProps).length > 0 ? (
+        <Cabecalho {...headerProps} />
+      ) : null}
+      {Object.keys(sessionProps).length > 0 ? Sessoes(sessionProps) : null}
+      {Object.keys(footerProps).length > 0 ? <Rodape {...footerProps} /> : null}
+    </>
+  );
+};
 
 function Sessoes(sessionProps) {
-    return <div className={sessionProps.classe}>
-        {sessionProps?.conteudos?.map((sessao, index) => (
-            <Sessao key={index} {...sessao} />
-        ))}
+  return (
+    <div className={sessionProps.classe}>
+      {
+        sessionProps.subrota ? <Outlet/> : sessionProps?.conteudos?.map((sessao, index) => (
+        <Sessao key={index} {...sessao} />
+      ))
+      }
     </div>
+  );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Imagem } from "../../atomos/imagem/imagem";
 import { Texto } from "../../atomos/Texto/Texto";
+import { HashLink } from 'react-router-hash-link';
 
 export const Lista = ({ direcionamento, lista = [], imagens = [] }) => {
   return (
@@ -17,7 +18,7 @@ function Listao(pista) {
     if (item.texto) {
       return (
         <li key={chave} className={item.classe}>
-          <Texto como={item.como} referencia={item.recurso}>
+          <Texto como={item.como} referencia={item.recurso} identidade = {item.identidade ? item.identidade : ""}>
             {item.texto}
           </Texto>
         </li>
@@ -33,9 +34,9 @@ function Listao(pista) {
 
       return (
         <li key={chave} className={item.classe}>
-          <a href={item.recurso}>
+          <HashLink smooth to={item.recurso+item.identidade}>
             <Imagem caminho={item.imagem} classe={item.classe} como={item.como || "img"} />
-          </a>
+          </HashLink>
         </li>
       );
     }
@@ -68,7 +69,7 @@ const ItemInterativo = ( listaCompleta ) => {
             // Só mostra os itens que TÊM texto (evita mostrar o próprio botão de novo)
             item.texto && (
               <li key={index}>
-                <Texto como={item.como} referencia={item.recurso} classe="block">
+                <Texto como={item.como} referencia={item.recurso} identidade={item.identidade ? item.identidade : ""} classe="block">
                   {item.texto}
                 </Texto>
               </li>

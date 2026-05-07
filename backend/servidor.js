@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const cors = require('cors');
 const rotear = require("./Rotas/rota");
 
@@ -11,6 +12,8 @@ const corsoptions = {
 app.use(cors(corsoptions));
 
 app.use(express.json()); 
+
+app.use('/imagens', express.static(path.join(__dirname, 'public/imagens')));
 
 app.use("/api", rotear);
 
