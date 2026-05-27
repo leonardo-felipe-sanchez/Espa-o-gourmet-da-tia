@@ -14,7 +14,7 @@ export const PaginaPrincipal = () => {
   
   const { dadosDaAPI, textosFixos } = getTestao();
   const Caixas = GetCaixas(textosFixos, dadosDaAPI);
-
+  const formulario = Formulario({id:"1", dadosDaAPI:dadosDaAPI, produto:{}});
   const PaginaInicial = {
     conteudos: [
       {
@@ -189,7 +189,7 @@ export const PaginaPrincipal = () => {
             classe: "px-auto flex items-center justify-center mb-20",
             conteudos: {
               classe: "w-full flex items-center justify-center",
-              formulario: Formulario,
+              formulario: formulario[0],
             },
           },
         ],
@@ -200,6 +200,7 @@ export const PaginaPrincipal = () => {
 
   return (
     <>
+    {console.log(formulario[0])},
       <ModeloDePaginaInicial sessionProps={PaginaInicial} />
     </>
   );

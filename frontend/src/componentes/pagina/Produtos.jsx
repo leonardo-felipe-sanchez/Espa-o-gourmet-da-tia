@@ -82,9 +82,9 @@ export const Produtos = () => {
         conteudos: [
           ...classesDaAPI.flatMap((categoria) => {
             const ProdutosCategoria = caixas.filter(
-              (caixa) => caixa.titulo?.texto === categoria,
+              (caixa) => caixa.titulo?.texto === categoria
             );
-
+            
             if (ProdutosCategoria.length === 0) {
               return [];
             }
@@ -130,5 +130,5 @@ export const Produtos = () => {
     subrota: EstaNaSubRota,
   };
 
-  return console.log(categoriao),<ModeloDePaginaInicial sessionProps={PaginaProdutos} />;
+  return <ModeloDePaginaInicial sessionProps={PaginaProdutos} />;
 };

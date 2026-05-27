@@ -1,8 +1,14 @@
-const express = require('express');
+import express from 'express';
+import path from 'path';
+import cors from 'cors';
+import {rotear} from "./Rotas/rota.mjs";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const app = express();
-const path = require('path');
-const cors = require('cors');
-const rotear = require("./Rotas/rota");
 
 const corsoptions = {
   origin: 'http://localhost:5173',
@@ -11,7 +17,7 @@ const corsoptions = {
 
 app.use(cors(corsoptions));
 
-app.use(express.json()); 
+app.use(express.json());
 
 app.use('/imagens', express.static(path.join(__dirname, 'public/imagens')));
 
