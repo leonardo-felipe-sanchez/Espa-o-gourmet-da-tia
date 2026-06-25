@@ -1,6 +1,6 @@
-const nodemailer = require("nodemailer");
+import nodemailer from 'nodemailer';
 
-const Dados = async (req, res) => {
+export const Dados = async (req, res) => {
   try {
     const { nome, email, telefone, mensagem } = req.body;
     console.log("Dados recebidos:", { nome, email, telefone, mensagem });
@@ -41,5 +41,3 @@ const Dados = async (req, res) => {
     res.status(500).json({ error: "Erro ao processar" });
   }
 };
-
-module.exports = { Dados };

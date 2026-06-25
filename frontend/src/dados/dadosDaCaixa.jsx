@@ -121,11 +121,11 @@ if (!textosFixos || textosFixos.length === 0) return [];
     ...(dadosDaAPI.map((produto)=>{
 return {
   classe: "flex flex-col gap-x-5 items-center w-[300px] bg-pink-400 rounded-t-[50px] mx-6 pointer",
-  titulo: {texto: produto.classe, como: "h2", classe: "hidden"},
+  titulo: {texto: produto.tipo.tipo, como: "h2", classe: "hidden"},
   imagem: { imagem: produto.imagem, classe: "w-full max-w-[300px] h-[350px] bg-cover bg-center rounded-t-[50px]"  },
   texto: {
-    classe: "flex flex-col justify-center items-center",
-    texto: [{ texto: produto.nome, como: "p", classe: "text-white font-bold my-12 text-xl" }], 
+    classe: "flex flex-col justify-center items-center gap-y-2 p-5",
+    texto: [{ texto: produto.nome, como: "h2", classe: "text-white  text-2xl text-center" }, { texto: `R$ ${produto.preco}`, como: "p", classe: "text-white font-bold text-xl" }], 
     botao: {
       classe: "bg-pink-500 text-white p-3 relative z-3 pointer",
       texto: "deletar",

@@ -1,36 +1,39 @@
-import { createBrowserRouter } from "react-router"
+import { createBrowserRouter } from "react-router";
 import { Produtos } from "../componentes/pagina/Produtos";
 import App from "../App";
 import { PaginaPrincipal } from "../componentes/pagina/PaginaPrincipal";
-import {UmProduto} from "../componentes/pagina/Produto";
+import { UmProduto } from "../componentes/pagina/Produto";
 import { redirect } from "react-router";
 import { CriarProduto } from "../componentes/pagina/CriarProduto";
+import { BoloPersonalizado } from "../componentes/pagina/BoloPersonalizado";
 
 export async function produtosLoader() {
-  const response = await fetch('http://localhost:3000/api/produtos');
+  const response = await fetch("http://localhost:3000/api/produtos");
   if (!response.ok) throw new Error("Erro ao carregar");
-  return response.json(); 
+  return response.json();
 }
 
 export async function categoriasLoader({ params }) {
   const data = await produtosLoader(); // Pega todos os produtos do seu backend
-  
+
   // Filtra os produtos onde a categoria (ou classe) é igual ao que veio na URL
   const produtosFiltrados = data.produtos.filter(
-    p => p.classe === params.categoriao
+    (p) => p.classe === params.categoriao,
   );
 
-  return { 
-    msg: `Filtrando por: ${params.categoriao}`, 
-    produtos: produtosFiltrados 
+  return {
+    msg: `Filtrando por: ${params.categoriao}`,
+    produtos: produtosFiltrados,
   };
 }
 
 export async function umProdutoLoader({ params }) {
-  const response = await fetch(`http://localhost:3000/api/produtos/${params.produtoId}`);
-  
+  const response = await fetch(
+    `http://localhost:3000/api/produtos/${params.produtoId}`,
+  );
+
   if (!response.ok) throw new Error("Produto não encontrado");
-  
+
   const data = await response.json();
   return data;
 }
@@ -38,15 +41,12 @@ export async function umProdutoLoader({ params }) {
 export async function editarAction({ request, params }) {
   const formData = await request.formData();
 
-  console.log(formData.get("nome"));
-  console.log(formData.get("imagem"));
-
   await fetch(`http://localhost:3000/api/produtos/${params.produtoId}`, {
     method: "PATCH",
     body: formData,
   });
 
-  return redirect("/produtos"); 
+  return redirect("/produtos");
 }
 
 export async function criarAction({ request }) {
@@ -55,12 +55,12 @@ export async function criarAction({ request }) {
   try {
     const response = await fetch(`http://localhost:3000/api/produtos`, {
       method: "POST",
-      body: formData, 
+      body: formData,
     });
 
-    if (!response.ok) throw new Error("Erro ao salvar");
+    if (!response.ok) throw new Error(response.statusText);
 
-    return redirect("/produtos"); 
+    return redirect("/produtos");
   } catch (error) {
     console.error(error);
     return null;
@@ -68,15 +68,40 @@ export async function criarAction({ request }) {
 }
 
 export async function deletarAction({ params }) {
-  await fetch(`http://localhost:3000/api/produtos/${params.id}`, { method: "DELETE" });
+  await fetch(`http://localhost:3000/api/produtos/${params.id}`, {
+    method: "DELETE",
+  });
   return redirect("/produtos");
+}
+
+export async function criarBolo({ request }){
+
+  console.log("entrou no criar bolo personalizado")
+
+   const formData = await request.formData();
+
+   console.log(formData)
+
+  try {
+    const response = await fetch(`http://localhost:3000/api/bolo-personalizado`, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) throw new Error("erro na resposta" + response.statusText);
+
+    return redirect("/produtos");
+  } catch (error) {
+    console.error("erro no tryCatch", error);
+    return null;
+  }
 }
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-     HydrateFallback: () => (
+    HydrateFallback: () => (
       <div className="h-screen flex items-center justify-center">
         <h2 className="text-pink-500 animate-pulse text-2xl font-bold">
           Carregando Espaço Gourmet...
@@ -84,18 +109,37 @@ export const router = createBrowserRouter([
       </div>
     ),
     children: [
-      {path: "/", element: <PaginaPrincipal />},
-{ 
-  path: "produtos", 
-  element: <Produtos />, 
-  loader: produtosLoader,
-  children: [
-    { path: ":produtoId", element: <UmProduto />, loader:umProdutoLoader, action: editarAction,},
-    { path: "deletar/:id", action: deletarAction },
-    { path: "criar", element: <CriarProduto/>, action: criarAction, loader: produtosLoader,},
-    { path: "filtro/:categoriao", element: <Produtos />, loader: categoriasLoader,}
-  ]
-},
+      { path: "/", element: <PaginaPrincipal /> },
+      {
+        path: "produtos",
+        element: <Produtos />,
+        loader: produtosLoader,
+        children: [
+          {
+            path: ":produtoId",
+            element: <UmProduto />,
+            loader: umProdutoLoader,
+            action: editarAction,
+          },
+          { path: "deletar/:id", action: deletarAction },
+          {
+            path: "criar",
+            element: <CriarProduto />,
+            action: criarAction,
+            loader: produtosLoader,
+          },
+          {
+            path: "filtro/:categoriao",
+            element: <Produtos />,
+            loader: categoriasLoader,
+          },
+        ],
+      },
+      {
+        path: "bolo-personalizado",
+        element: <BoloPersonalizado />,
+        action: criarBolo
+      }
     ],
   },
 ]);
