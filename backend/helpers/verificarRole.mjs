@@ -1,4 +1,4 @@
-import { temRole, obterRoles } from './helpers/rbac.mjs';
+import { temRole, obterRoles } from './rbac.mjs';
 
 /**
  * Middleware que verifica se usuário tem uma role específica

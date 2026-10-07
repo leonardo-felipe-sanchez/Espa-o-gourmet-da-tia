@@ -6,9 +6,11 @@ import { UmProduto } from "../componentes/pagina/Produto";
 import { redirect } from "react-router";
 import { CriarProduto } from "../componentes/pagina/CriarProduto";
 import { BoloPersonalizado } from "../componentes/pagina/BoloPersonalizado";
+import { ListaBolo } from "../componentes/pagina/ListaBolo";
 import {Login} from "../componentes/pagina/Login";
 import { Cadastro } from "../componentes/pagina/Cadastro";
 import { SignUpTeste } from "../componentes/pagina/SingUpTeste";
+import { UmBolo } from "../componentes/pagina/MeuBolo";
 
 export async function produtosLoader() {
   const response = await fetch("http://localhost:3000/api/produtos");
@@ -194,8 +196,6 @@ export async function loginAction({ request }) {
     localStorage.setItem("userId", usuario.id);
     localStorage.setItem("userEmail", usuario.email);
 
-    console.log("✅ Login bem-sucedido! ID:", usuario.id);
-
     // 5. Redirecionar para a página inicial
     return redirect("/");
 
@@ -317,6 +317,7 @@ export async function criarBoloAction({ request }) {
 
     // Validar token
     const token = localStorage.getItem("accessToken");
+    console.log(localStorage)
     if (!token) {
       throw redirect("/login");
     }
@@ -340,6 +341,7 @@ export async function criarBoloAction({ request }) {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${token}`,
+        "Refresh": `Bearer ${localStorage.getItem("refreshToken")}`,
       },
       body: novoFormData,
     });
@@ -353,7 +355,7 @@ export async function criarBoloAction({ request }) {
     console.log("✅ Bolo criado:", dados.bolo.id);
 
     // Redirecionar e mostrar sucesso
-    return redirect("/produtos?sucesso=bolo-criado");
+    return redirect("/produtos");
 
   } catch (error) {
     console.error("❌ Erro ao criar bolo:", error.message);
@@ -414,6 +416,7 @@ export async function editarBoloAction({ request, params }) {
       method: "PATCH",
       headers: {
         "Authorization": `Bearer ${token}`,
+        "Refresh": `Bearer ${localStorage.getItem("refreshToken")}`,
       },
       body: novoFormData,
     });
@@ -457,6 +460,7 @@ export async function deletarBoloAction({ params }) {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${token}`,
+        "Refresh": `Bearer ${localStorage.getItem("refreshToken")}`,
       },
     });
 
@@ -479,21 +483,43 @@ export async function deletarBoloAction({ params }) {
   }
 }
 
-// ============================================
-// 3. LOADERS - Funções que carregam dados
-// ============================================
 
-/**
- * LOADER: Listar meus bolos (autenticado)
- * GET /api/meus-bolos
- */
 export async function meusBolosLoader() {
   try {
     const dados = await fetchComAutenticacao("http://localhost:3000/api/meus-bolos", {
       method: "GET",
+      headers: {
+        "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+        "Refresh": `Bearer ${localStorage.getItem("refreshToken")}`,
+      },
     });
 
-    return dados.bolos || [];
+    return dados || [];
+
+  } catch (error) {
+    console.error("Erro ao carregar meus bolos:", error);
+    
+    // Se for erro de autenticação, redireciona
+    if (error.status === 302 || error.location) {
+      throw error;
+    }
+
+    return [];
+  }
+}
+
+export async function meuBoloLoader( {params}) {
+  try {
+    
+    const dados = await fetchComAutenticacao(`http://localhost:3000/api/meus-bolos/${params.boloId}`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+        "Refresh": `Bearer ${localStorage.getItem("refreshToken")}`,
+      },
+    });
+
+    return dados || [];
 
   } catch (error) {
     console.error("Erro ao carregar meus bolos:", error);
@@ -595,8 +621,20 @@ export const router = createBrowserRouter([
       },
       {
         path: "bolo-personalizado",
-        element: <BoloPersonalizado />,
-        action: criarBoloAction, // ✅ Ação atualizada
+        element: <ListaBolo />,
+        loader: meusBolosLoader,
+        children: [
+          {
+            path: ":boloId",
+            element: <UmBolo/>,
+            loader: meuBoloLoader
+          },
+          {
+            path: "novo bolo",
+            element: <BoloPersonalizado/>,
+            action: criarBoloAction,
+          }
+        ]
       },
       {
         path: "login",
@@ -612,11 +650,6 @@ export const router = createBrowserRouter([
         element: <Cadastro />,
         action: singupAction, // ✅ Ação de cadastro
       },
-      {
-        path: "singup-teste",
-        element: <SignUpTeste />,
-        action: singupAction, // ✅ Usar mesma ação de cadastro
-      }
     ],
   },
 ]);

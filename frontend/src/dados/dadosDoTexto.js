@@ -146,7 +146,7 @@ export const getTestao = (resultadoAPI) => {
       },
     ]
 
-  const dadosDaAPI = resultadoAPI?.produtos || [];
+  const dadosDaAPI = resultadoAPI?.produtos || resultadoAPI?.bolos  || [];;
   const classesDaAPI = resultadoAPI?.classe || [];
   return {
 textosFixos, dadosDaAPI, classesDaAPI

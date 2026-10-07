@@ -1,3 +1,4 @@
+
 CREATE POLICY "Usuários autenticados podem criar bolos"
 ON public.bolos
 FOR INSERT

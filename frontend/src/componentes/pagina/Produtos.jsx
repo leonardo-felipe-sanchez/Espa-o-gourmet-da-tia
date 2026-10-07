@@ -130,5 +130,5 @@ export const Produtos = () => {
     subrota: EstaNaSubRota,
   };
 
-  return <ModeloDePaginaInicial sessionProps={PaginaProdutos} />;
+  return console.log(EstaNaSubRota),<ModeloDePaginaInicial sessionProps={PaginaProdutos} />;
 };

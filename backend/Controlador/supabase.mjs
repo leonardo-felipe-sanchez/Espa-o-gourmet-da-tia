@@ -3,13 +3,11 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// ✅ FRONTEND (browser)
 export const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_PUBLISHABLE_KEY  // ← Pública
 );
 
-// ✅ ADMIN (backend)
 export const supabaseAdmin = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SECRET_KEY,  // ← Privada (só backend!)
@@ -21,14 +19,14 @@ export const supabaseAdmin = createClient(
   }
 );
 
-export function criarSupabaseAutenticado(token) {
+export function criarSupabaseAutenticadoAdmin(token) {
   if (!token) {
     throw new Error('Token é obrigatório para criar cliente autenticado');
   }
 
   return createClient(
     process.env.SUPABASE_URL,
-    process.env.SUPABASE_PUBLISHABLE_KEY,
+    process.env.SUPABASE_SECRET_KEY,
     {
       global: {
         headers: {

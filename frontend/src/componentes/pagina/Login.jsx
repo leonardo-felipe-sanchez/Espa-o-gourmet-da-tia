@@ -13,6 +13,21 @@ export const Login = () => {
                 },
                 divisoria: 1,
                 conteudos: [
+                                          {
+            classe:
+              "text-pink-500 font-bold flex items-center justify-center",
+            paragrafo: {
+              classe:
+                "text-center py-5 flex items-center justify-center text-3xl",
+              texto: [
+                {
+                  texto: "LOGIN",
+                  como: "h2",
+                  classe: "uppercase font-titulo",
+                },
+              ],
+            },
+          },
                     {
                         conteudos:{
                             formulario: formulario[4]
@@ -23,5 +38,5 @@ export const Login = () => {
         ]
     }
 
-    return console.log(formulario[4]), <ModeloDePaginaInicial sessionProps={PaginaLogin} />
+    return <ModeloDePaginaInicial sessionProps={PaginaLogin} />
 }

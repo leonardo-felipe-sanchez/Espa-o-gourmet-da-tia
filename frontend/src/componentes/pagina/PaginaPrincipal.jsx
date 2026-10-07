@@ -13,6 +13,7 @@ export const PaginaPrincipal = () => {
   const Testao = getTestao().textosFixos;
   
   const { dadosDaAPI, textosFixos } = getTestao();
+  console.log(dadosDaAPI);
   const Caixas = GetCaixas(textosFixos, dadosDaAPI);
   const formulario = Formulario({id:"1", dadosDaAPI:dadosDaAPI, produto:{}});
   const PaginaInicial = {
@@ -200,7 +201,6 @@ export const PaginaPrincipal = () => {
 
   return (
     <>
-    {console.log(formulario[0])},
       <ModeloDePaginaInicial sessionProps={PaginaInicial} />
     </>
   );
