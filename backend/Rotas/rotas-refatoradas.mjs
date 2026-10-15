@@ -50,7 +50,7 @@ rotear.get("/produtos", async (req, res) => {
 rotear.post(
   "/produtos",
   atualizar.single("imagem"),
-  verificarRole("admin"),
+  autenticar,
   async (req, res) => {
     try {
       const { nome, classinha, preco, descricao } = req.body;
@@ -69,13 +69,17 @@ rotear.post(
             upsert: true,
           });
 
-      if (uploadError) throw uploadError;
+      if (uploadError) {
+        res.status(500).json({ erro: "Erro ao fazer upload da imagem", detalhes: uploadError.message });
+      };
 
       const { data: urlData, error: urlError } = await supabaseAdmin.storage
         .from("produtos")
         .getPublicUrl(`imagens/${nomeDoArquivo}`);
 
-      if (urlError) throw urlError;
+      if (urlError) {
+        res.status(500).json({ erro: "Erro ao obter URL da imagem", detalhes: urlError.message });
+      }
 
       const urlPublicaDaImagem = urlData.publicUrl;
 
@@ -110,7 +114,9 @@ rotear.post(
         })
         .select();
 
-      if (error) throw error;
+      if (error) {
+        res.status(500).json({ erro: error.message });
+      }
 
       res.status(201).json({
         msg: `Produto ${nome} criado com sucesso!`,
@@ -138,7 +144,7 @@ rotear.get("/produtos/:id", async (req, res) => {
 
 rotear.patch(
   "/produtos/:id",
-  verificarRole("admin"),
+  autenticar,
   atualizar.single("imagem"),
   async (req, res) => {
     try {

@@ -60,6 +60,10 @@ export async function criarAction({ request }) {
   try {
     const response = await fetch(`http://localhost:3000/api/produtos`, {
       method: "POST",
+      headers: {
+        "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+        "Refresh": `Bearer ${localStorage.getItem("refreshToken")}`,
+      },
       body: formData,
     });
 
@@ -155,6 +159,8 @@ export async function fetchComAutenticacao(url, opcoes = {}) {
 // 2. ACTIONS - Funções que modificam dados
 // ============================================
 
+
+
 /**
  * ACTION: Login
  * POST /api/usuario
@@ -166,11 +172,22 @@ export async function loginAction({ request }) {
     const formData = await request.formData();
     const email = formData.get("email");
     const password = formData.get("password");
+    const isAdmin = formData.get("isAdmin") ; // Verifica se é admin
 
-    console.log("Tentando login com:", email);
-
-    // 2. Fazer requisição ao backend
-    const response = await fetch("http://localhost:3000/api/usuario", {
+    let response 
+    if (isAdmin) {
+      console.log("entrou")
+      response = await fetch("http://localhost:3000/api/admin/usuario/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    }
+    else {
+          // 2. Fazer requisição ao backend
+    response = await fetch("http://localhost:3000/api/usuario", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -180,6 +197,7 @@ export async function loginAction({ request }) {
         password,
       }),
     });
+    }
 
     if (!response.ok) {
       const dados = await response.json();

@@ -333,6 +333,15 @@ export const Formulario = ({id = "",produto = {}, dadosDaAPI = []}) => {
           classe:
             "m-1 p-3 border hover:border-2 border-pink-500 w-full max-w-[320px] rounded-[1vw] text-center",
         },
+        {
+          id: "isAdmin",
+          label: "Login como administrador",
+          type: "button",
+          placeholder: "é Admin",
+          defaultValue: false,
+          classe:
+            "m-1 p-3 border hover:border-2 border-pink-500 rounded-[1vw]",
+        }
       ],
       botao: {
         texto: "Entrar",

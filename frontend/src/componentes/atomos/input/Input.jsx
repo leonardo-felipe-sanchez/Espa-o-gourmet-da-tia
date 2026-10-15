@@ -10,6 +10,11 @@ export const Input = ({
   opcao = []
 }) => {
   const [adicionarlinha, setAdicionarLinha] = useState(9);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const handleClick = () => {
+    setIsAdmin((prev) => !prev);
+  };
 
   if (type === "textarea") {
     return (
@@ -39,7 +44,24 @@ export const Input = ({
       }
     </select>
    )
-  } else {
+  }
+  else if (type === "button") {
+    return (
+<>
+      <label >{isAdmin ? "Administrador" : "Usuário"}</label>
+      <input
+        type="checkbox"
+        name={isAdmin ? "isAdmin" : "isUser"}
+        id={isAdmin ? "isAdmin" : "isUser"}
+        className={classe}
+        onClick={handleClick}
+      
+        value={isAdmin ? "isAdmin" : "isUser"}
+      />
+</>
+    );
+  }
+  else {
 
     /**
      *             <select key={index} name={campo.id} className={campo.classe}>
