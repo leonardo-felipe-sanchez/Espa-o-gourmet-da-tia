@@ -863,6 +863,7 @@ rotear.post(
       res.status(500).json({
         erro: "Erro ao criar bolo",
         detalhes: error.message,
+        caminho: error.path
       });
     }
   },

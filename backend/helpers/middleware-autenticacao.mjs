@@ -55,6 +55,8 @@ export const autenticar = async (req, res, next) => {
       refresh: fresToken
     };
 
+console.log("Usuário autenticado:", req.usuario);
+
     // 5. Passar para o próximo middleware/rota
     next();
 
@@ -74,6 +76,9 @@ export const validarUUID = (uuid) => {
   const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
   return uuidRegex.test(uuid);
 };
+
+
+
 
 /**
  * Criar cliente Supabase com token do usuário autenticado

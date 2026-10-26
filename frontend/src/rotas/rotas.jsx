@@ -639,16 +639,18 @@ export const router = createBrowserRouter([
       },
       {
         path: "bolo-personalizado",
-        element: <ListaBolo />,
-        loader: meusBolosLoader,
         children: [
+          {
+        path: "",
+        element: <ListaBolo />,
+        loader: meusBolosLoader,},
           {
             path: ":boloId",
             element: <UmBolo/>,
             loader: meuBoloLoader
           },
           {
-            path: "novo bolo",
+            path: "criar",
             element: <BoloPersonalizado/>,
             action: criarBoloAction,
           }

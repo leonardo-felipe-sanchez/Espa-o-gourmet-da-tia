@@ -7,7 +7,7 @@ import { temRole, obterRoles } from './rbac.mjs';
 export function verificarRole(roleRequerida) {
   return async (req, res, next) => {
     try {
-      console.log(req);
+      console.log( req.headers + " " + req.tokens);
       if (!req.usuario || !req.usuario.token) {
         return res.status(401).json({ erro: 'Usuário não autenticado' });
       }
