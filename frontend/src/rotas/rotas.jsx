@@ -11,9 +11,10 @@ import {Login} from "../componentes/pagina/Login";
 import { Cadastro } from "../componentes/pagina/Cadastro";
 import { SignUpTeste } from "../componentes/pagina/SingUpTeste";
 import { UmBolo } from "../componentes/pagina/MeuBolo";
+import { API_URL } from "../services/api";
 
 export async function produtosLoader() {
-  const response = await fetch("http://localhost:3000/api/produtos");
+  const response = await fetch(`${API_URL}/produtos`);
   if (!response.ok) throw new Error("Erro ao carregar");
   return response.json();
 }
@@ -34,7 +35,7 @@ export async function categoriasLoader({ params }) {
 
 export async function umProdutoLoader({ params }) {
   const response = await fetch(
-    `http://localhost:3000/api/produtos/${params.produtoId}`,
+    `http://${API_URL}/produtos/${params.produtoId}`,
   );
 
   if (!response.ok) throw new Error("Produto não encontrado");
@@ -46,7 +47,7 @@ export async function umProdutoLoader({ params }) {
 export async function editarAction({ request, params }) {
   const formData = await request.formData();
 
-  await fetch(`http://localhost:3000/api/produtos/${params.produtoId}`, {
+  await fetch(`http://${API_URL}/produtos/${params.produtoId}`, {
     method: "PATCH",
     body: formData,
   });
@@ -58,7 +59,7 @@ export async function criarAction({ request }) {
   const formData = await request.formData();
 
   try {
-    const response = await fetch(`http://localhost:3000/api/produtos`, {
+    const response = await fetch(`http://${API_URL}/produtos`, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
@@ -77,7 +78,7 @@ export async function criarAction({ request }) {
 }
 
 export async function deletarAction({ params }) {
-  await fetch(`http://localhost:3000/api/produtos/${params.id}`, {
+  await fetch(`http://${API_URL}/produtos/${params.id}`, {
     method: "DELETE",
   });
   return redirect("/produtos");
@@ -92,7 +93,7 @@ export async function criarBolo({ request }){
    console.log(formData)
 
   try {
-    const response = await fetch(`http://localhost:3000/api/bolo-personalizado`, {
+    const response = await fetch(`http://${API_URL}/bolo-personalizado`, {
       method: "POST",
       body: formData,
     });
@@ -177,7 +178,7 @@ export async function loginAction({ request }) {
     let response 
     if (isAdmin) {
       console.log("entrou")
-      response = await fetch("http://localhost:3000/api/admin/usuario/login", {
+      response = await fetch(`http://${API_URL}/api/admin/usuario/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -187,7 +188,7 @@ export async function loginAction({ request }) {
     }
     else {
           // 2. Fazer requisição ao backend
-    response = await fetch("http://localhost:3000/api/usuario", {
+    response = await fetch(`http://${API_URL}/api/usuario`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -251,7 +252,7 @@ export async function singupAction({ request }) {
 
     console.log("Tentando criar usuário com:", email);
 
-    const response = await fetch("http://localhost:3000/api/usuario/registrar", {
+    const response = await fetch(`http://${API_URL}/api/usuario/registrar`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -355,7 +356,7 @@ export async function criarBoloAction({ request }) {
     if (topper) novoFormData.append("topper", topper);
 
     // ✅ IMPORTANTE: Enviar com token no header
-    const response = await fetch("http://localhost:3000/api/bolo-personalizado", {
+    const response = await fetch(`http://${API_URL}/bolo-personalizado`, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -430,7 +431,7 @@ export async function editarBoloAction({ request, params }) {
     if (imagem) novoFormData.append("imagem", imagem);
     if (topper) novoFormData.append("topper", topper);
 
-    const response = await fetch(`http://localhost:3000/api/bolo-personalizado/${id}`, {
+    const response = await fetch(`http://${API_URL}/bolo-personalizado/${id}`, {
       method: "PATCH",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -474,7 +475,7 @@ export async function deletarBoloAction({ params }) {
       throw redirect("/login");
     }
 
-    const response = await fetch(`http://localhost:3000/api/bolo-personalizado/${id}`, {
+    const response = await fetch(`http://${API_URL}/bolo-personalizado/${id}`, {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -504,7 +505,7 @@ export async function deletarBoloAction({ params }) {
 
 export async function meusBolosLoader() {
   try {
-    const dados = await fetchComAutenticacao("http://localhost:3000/api/meus-bolos", {
+    const dados = await fetchComAutenticacao(`http://${API_URL}/api/meus-bolos`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
@@ -529,7 +530,7 @@ export async function meusBolosLoader() {
 export async function meuBoloLoader( {params}) {
   try {
     
-    const dados = await fetchComAutenticacao(`http://localhost:3000/api/meus-bolos/${params.boloId}`, {
+    const dados = await fetchComAutenticacao(`http://${API_URL}/api/meus-bolos/${params.boloId}`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
@@ -557,7 +558,7 @@ export async function meuBoloLoader( {params}) {
  */
 export async function todosOsBolosLoader() {
   try {
-    const response = await fetch("http://localhost:3000/api/todos-os-bolos");
+    const response = await fetch(`http://${API_URL}/api/todos-os-bolos`);
     
     if (!response.ok) {
       throw new Error("Erro ao carregar bolos");
